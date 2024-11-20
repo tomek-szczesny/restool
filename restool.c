@@ -236,7 +236,7 @@ void find_par(float r, struct vss * ser, struct res * r1, struct res * r2, float
 		e = fabs(e);
 		if (e <= *et) {
 			res_print(&tr1); printf(" || "); res_print(&tr2);
-			printf("\tError: %.2g\%\n", e*100);
+			printf("\tError: %.2g%%\n", e*100);
 		}
 		if (e < be) {
 			*r1 = tr1; *r2 = tr2; be = e;
@@ -247,7 +247,7 @@ void find_par(float r, struct vss * ser, struct res * r1, struct res * r2, float
 	printf(bold);
 	printf("The best parallel resistor combination:\n");
 	res_print(r1); printf(" || "); res_print(r2);
-	printf("\tError: %.2g\%\n", be*100);
+	printf("\tError: %.2g%%\n", be*100);
 	printf(normal);
 	return;
 }
@@ -270,7 +270,7 @@ void find_ser(float r, struct vss * ser, struct res * r1, struct res * r2, float
 		e = fabs(e);
 		if (e <= *et) {
 			res_print(&tr1); printf(" + "); res_print(&tr2);
-			printf("\tError: %.2g\%\n", e*100);
+			printf("\tError: %.2g%%\n", e*100);
 		}
 		if (e < be) {
 			*r1 = tr1; *r2 = tr2; be = e;
@@ -281,7 +281,7 @@ void find_ser(float r, struct vss * ser, struct res * r1, struct res * r2, float
 	printf(bold);
 	printf("The best series resistor combination:\n");
 	res_print(r1); printf(" + "); res_print(r2);
-	printf("\tError: %.2g\%\n", be*100);
+	printf("\tError: %.2g%%\n", be*100);
 	printf(normal);
 	return;
 }
@@ -303,7 +303,7 @@ void find_ratio(float r, struct vss * ser, struct res * r1, struct res * r2, flo
 		e = fabs(e);
 		if (e <= *et) {
 			res_print(&tr1); printf(" : "); res_print(&tr2);
-			printf("\tError: %.2g\%\n", e*100);
+			printf("\tError: %.2g%%\n", e*100);
 		}
 		if (e < be) {
 			*r1 = tr1; *r2 = tr2; be = e;
@@ -314,7 +314,7 @@ void find_ratio(float r, struct vss * ser, struct res * r1, struct res * r2, flo
 	printf(bold);
 	printf("The closest ratio found:\n");
 	res_print(r1); printf(" : "); res_print(r2);
-	printf("\tError: %.2g\%\n", be*100);
+	printf("\tError: %.2g%%\n", be*100);
 	printf(normal);
 	return;
 }
@@ -383,7 +383,7 @@ void find_weights(int n, float * r, struct vss * ser, float * et)
 				res_print(&(trs[i])); if (i < (n-1)) printf(" : ");
 				i++;
 			}
-			printf("\tError: %.2g\%\n", e*100);
+			printf("\tError: %.2g%%\n", e*100);
 		}
 
 		// Store the result if it's the best so far
@@ -404,7 +404,7 @@ void find_weights(int n, float * r, struct vss * ser, float * et)
 		res_print(&(ans[i])); if (i < (n-1)) printf(" : ");
 		i++;
 	}
-	printf("\tError: %.2g\%\n", be*100);
+	printf("\tError: %.2g%%\n", be*100);
 	printf(normal);
 
 	free(trs);
@@ -478,7 +478,7 @@ void find_divider(int n, float * v, struct vss * ser, float * et)
 				res_print(&(trs[i])); if (i < (n-1)) printf(" : ");
 				i++;
 			}
-			printf("\tError: %.2g\%\n", e*100);
+			printf("\tError: %.2g%%\n", e*100);
 		}
 
 		// Store the result if it's the best so far
@@ -499,7 +499,7 @@ void find_divider(int n, float * v, struct vss * ser, float * et)
 		res_print(&(ans[i])); if (i < (n-1)) printf(" : ");
 		i++;
 	}
-	printf("\tError: %.2g\%\n", be*100);
+	printf("\tError: %.2g%%\n", be*100);
 	printf(normal);
 
 	free(trs);
@@ -550,7 +550,7 @@ void usage()
 	printf("\tFind the best approximation of 12.34k resistance in E24 series:\n");
 	printf("\trestool -e24 12.34k\n");
 	printf("\n");
-	printf("\tThe same as above, but show all results with error <1% :\n");
+	printf("\tThe same as above, but show all results with error <1%% :\n");
 	printf("\trestool -e24 -e 0.01 12.34k\n");
 	printf("\n");
 	printf("\tFind the best set of resistors to build a 5-bit DAC resistor ladder:\n");

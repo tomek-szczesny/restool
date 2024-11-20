@@ -1,5 +1,5 @@
 default: 
-	gcc -lm -o restool restool.c
+	gcc -o restool restool.c -lm
 
 install:
 	install -p -s restool /usr/local/bin
