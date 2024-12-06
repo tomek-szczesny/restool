@@ -210,6 +210,22 @@ float r_get(char * in) {
 
 }
 
+float e_get(char * in) {
+	// Attempts to catch values such as:
+	// 0.03, 0.1%, 1%
+	float f;
+	char s;
+	int ssf = sscanf(in, "%f%c", &f, &s);
+	if (ssf == 0) return -1;
+	if (ssf == 1) return f;
+	if (ssf == 2) {
+		if (s == '%') f /= 100;
+		return f;
+	}
+	return -1;
+
+}
+
 //----------------------------------------------------------------------------//
 
 // Finds the best match of two parallel resistors
@@ -579,7 +595,7 @@ int main(int argc, char **argv)
 		
 		// error
 		if (!strcmp(argv[i], "-e")) {
-			e_d = atof(argv[++i]);
+			e_d = e_get(argv[++i]);
 			if (e_d < 0 || e_d > 0.101) usage();
 			continue;
 		}
